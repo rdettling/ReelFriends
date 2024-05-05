@@ -1,9 +1,10 @@
 import sqlite3
 import requests
+from dotenv import load_dotenv
 
 
 DATABASE = "../sql/db.sqlite"
-API_KEY = "f4db922d72325be8ef6434d190e4f1f2"
+load_dotenv()
 
 
 def get_db():
@@ -136,7 +137,7 @@ def create_user(username, hashed_password):
 
 
 def fetch_movie_poster(imdb_id):
-    url = f"https://api.themoviedb.org/3/find/{imdb_id}?api_key={API_KEY}&external_source=imdb_id"
+    url = f"https://api.themoviedb.org/3/find/{imdb_id}?api_key={REELFRIENDS_API_KEY}&external_source=imdb_id"
     response = requests.get(url)
     data = response.json()
     # Assuming the movie is always found and has a poster, adjust as necessary
